@@ -1,15 +1,25 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import {requireNativeComponent} from 'react-native'
+import {requireNativeComponent, ViewPropTypes} from 'react-native'
 
 class Tweet extends React.Component {
+  state = {
+    height: 0
+  }
+  onSizeChange = (event) => {
+    const {height} = event.nativeEvent
+    height && this.setState({height})
+  }
   render () {
-    return <RNTweetView {...this.props} />
+    const {height} = this.state
+    return <RNTweetView {...this.props} style={[this.props.style, {height}]} onSizeChange={this.onSizeChange} />
   }
 }
 
 Tweet.propTypes = {
-  tweetId: PropTypes.string
+  ...ViewPropTypes,
+  tweetId: PropTypes.string,
+  onSizeChange: PropTypes.func
 }
 
 const RNTweetView = requireNativeComponent('RNTweetView', Tweet)

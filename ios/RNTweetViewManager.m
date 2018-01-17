@@ -16,9 +16,10 @@ RCT_EXPORT_MODULE();
 - (UIView *)view
 {
     RNTweetView *tweetView = [[RNTweetView alloc] init];
-    return twetView;
+    return tweetView;
 }
 
 RCT_EXPORT_VIEW_PROPERTY(tweetId, NSString)
+RCT_EXPORT_VIEW_PROPERTY(onSizeChange, RCTBubblingEventBlock)
 
 @end

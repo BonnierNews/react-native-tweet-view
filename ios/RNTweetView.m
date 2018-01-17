@@ -15,6 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.tweetView = [[TWTRTweetView alloc] init];
+        self.tweetView.showActionButtons = true;
         [self addSubview:self.tweetView];
     }
     return self;
@@ -22,6 +23,12 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    if (self.tweetView != nil) {
+        CGFloat desiredHeight = [self.tweetView sizeThatFits:CGSizeMake(self.bounds.size.width, CGFLOAT_MAX)].height;
+        if (self.onSizeChange) {
+            self.onSizeChange(@{@"width": [NSNumber numberWithDouble:self.frame.size.width], @"height": [NSNumber numberWithDouble:desiredHeight]});
+        }
+    }
     self.tweetView.frame = self.bounds;
 }
 

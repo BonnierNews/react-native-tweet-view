@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <React/RCTView.h>
 
 @import TwitterKit;
 
 @interface RNTweetView : UIView
 
 @property(nonatomic) NSString* tweetId;
-@property(nonatomic, copy) TWTRTweetView* tweetView;
+@property(nonatomic) TWTRTweetView* tweetView;
+@property (nonatomic, copy) RCTBubblingEventBlock onSizeChange;
 
 @end
