@@ -9,8 +9,7 @@ Wrapping [Twitter Kit](https://github.com/twitter/twitter-kit-ios)
 ##### iOS
 
 1. `yarn add BonnierNews/react-native-tweet`
-2. Add the [Google Mobile Ads SDK](https://developers.google.com/admob/ios/quick-start#import_the_mobile_ads_sdk) to your Xcode project with CocoaPods or manually. This is only needed for iOS and guarantees your app is using the newest AdMob version.
-3. Add react-native-tweet static library to your Xcode project like explained [here](http://facebook.github.io/react-native/docs/linking-libraries-ios.html#manual-linking). (Step 3 of this guide is not needed)
+2. [Install Twitter Kit](https://dev.twitter.com/twitterkit/ios/installation)
 
 ##### Android
 
@@ -38,7 +37,7 @@ dependencies {
 In **MainAplication.java** on top, where imports are:
 
 ```java
-import se.bonniernews.RNDfp.RNDFPPackage;
+import se.bonniernews.RNTweet.RNTweetPackage;
 ```
 
 Under `protected List<ReactPackage> getPackages() {`:
@@ -46,7 +45,7 @@ Under `protected List<ReactPackage> getPackages() {`:
 ```java
   return Arrays.<ReactPackage>asList(
     new MainReactPackage(),
-    new RNDFPPackage()
+    new RNTweetPackage()
   );
 ```
 
