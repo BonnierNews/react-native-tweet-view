@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A6E0F9EB200F879A004D9F4C /* RNTweetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E0F9EA200F879A004D9F4C /* RNTweetManager.m */; };
+		A6A27BBD200F999E00672E8C /* RNTweetView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A27BBC200F999E00672E8C /* RNTweetView.m */; };
+		A6E0F9EB200F879A004D9F4C /* RNTweetViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E0F9EA200F879A004D9F4C /* RNTweetViewManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +24,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A6E0F9E9200F879A004D9F4C /* RNTweetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTweetManager.h; sourceTree = "<group>"; };
-		A6E0F9EA200F879A004D9F4C /* RNTweetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTweetManager.m; sourceTree = "<group>"; };
+		A6A27BBB200F999E00672E8C /* RNTweetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTweetView.h; sourceTree = "<group>"; };
+		A6A27BBC200F999E00672E8C /* RNTweetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTweetView.m; sourceTree = "<group>"; };
+		A6E0F9E9200F879A004D9F4C /* RNTweetViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTweetViewManager.h; sourceTree = "<group>"; };
+		A6E0F9EA200F879A004D9F4C /* RNTweetViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTweetViewManager.m; sourceTree = "<group>"; };
 		A96DA7741C146D7200FC639B /* libRNTweet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNTweet.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -42,8 +45,10 @@
 		A96DA76B1C146D7200FC639B = {
 			isa = PBXGroup;
 			children = (
-				A6E0F9E9200F879A004D9F4C /* RNTweetManager.h */,
-				A6E0F9EA200F879A004D9F4C /* RNTweetManager.m */,
+				A6A27BBB200F999E00672E8C /* RNTweetView.h */,
+				A6A27BBC200F999E00672E8C /* RNTweetView.m */,
+				A6E0F9E9200F879A004D9F4C /* RNTweetViewManager.h */,
+				A6E0F9EA200F879A004D9F4C /* RNTweetViewManager.m */,
 				A96DA7751C146D7200FC639B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -113,7 +118,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6E0F9EB200F879A004D9F4C /* RNTweetManager.m in Sources */,
+				A6A27BBD200F999E00672E8C /* RNTweetView.m in Sources */,
+				A6E0F9EB200F879A004D9F4C /* RNTweetViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

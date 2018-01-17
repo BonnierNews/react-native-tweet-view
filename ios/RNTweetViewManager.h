@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <React/RCTViewManager.h>
 
-@interface RNTweetManager : NSObject
+@interface RNTweetViewManager : RCTViewManager
 
 @end
