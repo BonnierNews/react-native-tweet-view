@@ -9,7 +9,7 @@ class Tweet extends React.Component {
 }
 
 Tweet.propTypes = {
-  tweetId: PropTypes.number
+  tweetId: PropTypes.string
 }
 
 const RNTweetView = requireNativeComponent('RNTweetView', Tweet)
