@@ -1,3 +1,7 @@
+/**
+ * Created by daniel.lindstrom on 2018-01-17.
+ */
+
 package se.bonniernews.rntweet;
 
 import com.facebook.react.ReactPackage;
@@ -9,11 +13,6 @@ import com.facebook.react.uimanager.ViewManager;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-
-/**
- * Created by daniel.lindstrom on 2018-01-17.
- */
 
 public class RNTweetPackage implements ReactPackage {
     @Override
