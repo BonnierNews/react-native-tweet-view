@@ -8,6 +8,9 @@ import android.content.Context;
 import android.location.Location;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.View;
+import android.graphics.Paint;
+import android.graphics.Canvas;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
@@ -25,6 +28,11 @@ import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.facebook.react.views.view.ReactViewGroup;
 
+import android.widget.RelativeLayout;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
+
+import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.models.Tweet;
 import com.twitter.sdk.android.core.TwitterException;
@@ -35,39 +43,70 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-class ReactTweetView extends ReactViewGroup {
+class RNTweetView extends RelativeLayout {
+    private TweetView tweetView = null;
 
-  public void setTweetId(string tweetId) {
-    TweetUtils.loadTweet(tweetId, new Callback<Tweet>() {
-      @Override
-      public void success(Result<Tweet> result) {
-        return new TweetView(EmbeddedTweetsActivity.this, tweet);
-      }
+    public RNTweetView(Context context) {
+        super(context);
+    }
 
-      @Override
-      public void failure(TwitterException exception) {
-      }
-    });
-  }
+    public void setTweetId(long tweetId) {
+        TweetUtils.loadTweet(tweetId, new Callback<Tweet>() {
+            @Override
+            public void success(Result<Tweet> result) {
+                setTweet(result.data);
+            }
+
+            @Override
+            public void failure(TwitterException exception) {
+            }
+        });
+    }
+
+
+    public void setTweet(Tweet tweet) {
+        if(tweetView == null) {
+            tweetView = new TweetView(getContext(), tweet);
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            layoutParams.addRule(CENTER_IN_PARENT);
+            tweetView.setLayoutParams(layoutParams);
+            addView(tweetView);
+        }
+        initializeTweetView();
+    }
+
+    private void initializeTweetView() {
+        if(tweetView != null) {
+            tweetView.setVisibility(View.VISIBLE);
+            tweetView.requestLayout();
+        }
+    }
 }
 
-class ReactTweetViewManager extends SimpleViewManager<ReactTweetView> {
-  public static final String REACT_CLASS = "RNTweetView";
-  public static final String PROP_TWEET_ID = "tweetId";
+class RNTweetViewManager extends SimpleViewManager<RNTweetView> {
+    public static final String REACT_CLASS = "RNTweetView";
+    public static final String PROP_TWEET_ID = "tweetId";
 
-  @Override
-  public String getName() {
-    return REACT_CLASS;
-  }
+    @Override
+    public String getName() {
+        return REACT_CLASS;
+    }
 
-  @Override
-  protected ReactTweetView createViewInstance(ThemedReactContext themedReactContext) {
-    ReactTweetView tweetView = new ReactTweetView(themedReactContext);
-    return tweetView;
-  }
+    @Override
+    protected RNTweetView createViewInstance(ThemedReactContext themedReactContext) {
+        RNTweetView tweetView = createTweetView(themedReactContext);
+        // tweetView.addSizeChangeListener(this);
+        return tweetView;
+    }
 
-  @ReactProp(name = PROP_TWEET_ID)
-  public void setTweetId(final ReactTweetView view, final string tweetId) {
-    view.setTweetId(tweetId);
-  }
+    @ReactProp(name = PROP_TWEET_ID)
+    public void setTweetId(final RNTweetView view, final String tweetId) {
+        long parsedTweetId = Long.parseLong(tweetId);
+        view.setTweetId(parsedTweetId);
+    }
+
+    @NonNull
+    public static RNTweetView createTweetView(ThemedReactContext context) {
+        return new RNTweetView(context);
+    }
 }
