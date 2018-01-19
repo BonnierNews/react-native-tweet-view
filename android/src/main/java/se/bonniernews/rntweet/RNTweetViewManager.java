@@ -31,6 +31,7 @@ import com.facebook.react.views.view.ReactViewGroup;
 import android.widget.RelativeLayout;
 import android.support.annotation.NonNull;
 import android.view.ViewGroup;
+import android.util.DisplayMetrics;
 
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.Callback;
@@ -45,6 +46,7 @@ import java.util.Map;
 
 class RNTweetView extends RelativeLayout {
     private TweetView tweetView = null;
+    private boolean postponedResize = false;
 
     public RNTweetView(Context context) {
         super(context);
@@ -72,13 +74,45 @@ class RNTweetView extends RelativeLayout {
             tweetView.setLayoutParams(layoutParams);
             addView(tweetView);
         }
-        initializeTweetView();
+        updateSize();
     }
 
-    private void initializeTweetView() {
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
+
+        if (postponedResize) {
+            postponedResize = false;
+            updateSize();
+        }
+    }
+
+    private void updateSize() {
+        if (getWidth() <= 0) {
+            postponedResize = true;
+            return;
+        }
+
+        measureTweet();
+        requestLayout();
+
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int height = Math.round(tweetView.getMeasuredHeight() / metrics.density);
+        WritableMap event = Arguments.createMap();
+        event.putInt("height", height);
+        ReactContext reactContext = (ReactContext)getContext();
+        reactContext.getJSModule(RCTEventEmitter.class)
+        .receiveEvent(getId(), "onSizeChange", event);
+    }
+
+
+    private void measureTweet() {
+
         if(tweetView != null) {
-            tweetView.setVisibility(View.VISIBLE);
-            tweetView.requestLayout();
+            int w = View.MeasureSpec.makeMeasureSpec(getWidth(), MeasureSpec.EXACTLY);
+            int h = View.MeasureSpec.makeMeasureSpec(ViewGroup.LayoutParams.WRAP_CONTENT, MeasureSpec.UNSPECIFIED);
+
+            tweetView.measure(w, h);
         }
     }
 }
@@ -108,5 +142,14 @@ class RNTweetViewManager extends SimpleViewManager<RNTweetView> {
     @NonNull
     public static RNTweetView createTweetView(ThemedReactContext context) {
         return new RNTweetView(context);
+    }
+
+    @Override
+    @Nullable
+    public Map<String, Object> getExportedCustomDirectEventTypeConstants() {
+        MapBuilder.Builder<String, Object> builder = MapBuilder.builder();
+        return builder
+            .put("onSizeChange", MapBuilder.of("registrationName", "onSizeChange"))
+            .build();
     }
 }
