@@ -2,12 +2,17 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import {requireNativeComponent, ViewPropTypes} from 'react-native'
 
+let savedHeight = {}
+
 class Tweet extends React.Component {
   state = {
-    height: 0
+    height: (this.props.tweetId && savedHeight[this.props.tweetId])|| 0
   }
   onSizeChange = (event) => {
     const {height} = event.nativeEvent
+    const {tweetId} = this.props
+    if (height < this.state.height || !tweetId) return
+    savedHeight[tweetId] = height
     height && this.setState({height})
   }
   render () {

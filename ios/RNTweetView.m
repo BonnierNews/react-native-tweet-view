@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.tweetView = [[TWTRTweetView alloc] init];
-        self.tweetView.showActionButtons = true;
+        self.tweetView.showActionButtons = false;
         [self addSubview:self.tweetView];
     }
     return self;
