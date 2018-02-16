@@ -1,3 +1,3 @@
 import Tweet from './Tweet'
 
-export { Tweet }
+export default Tweet
