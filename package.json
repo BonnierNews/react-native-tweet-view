@@ -1,6 +1,6 @@
 {
   "name": "react-native-tweet-view",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A react-native component for displaing a tweet.",
   "author": "Daniel Lindström <daniel@lindstrm.se>",
   "main": "index.js",
@@ -10,7 +10,7 @@
     "url": "git@github.com:bonniernews/react-native-tweet-view.git"
   },
   "dependencies": {
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.6.1"
   },
   "peerDependencies": {
     "react-native": ">=0.44.0"
