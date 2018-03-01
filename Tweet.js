@@ -8,6 +8,7 @@ class Tweet extends React.Component {
   state = {
     height: (this.props.tweetId && savedHeight[this.props.tweetId])|| 0
   }
+
   onSizeChange = (event) => {
     const {height} = event.nativeEvent
     const {tweetId} = this.props
@@ -15,6 +16,7 @@ class Tweet extends React.Component {
     savedHeight[tweetId] = height
     height && this.setState({height})
   }
+
   render () {
     const {height} = this.state
     return <RNTweetView {...this.props} style={[this.props.style, {height}]} onSizeChange={this.onSizeChange} />

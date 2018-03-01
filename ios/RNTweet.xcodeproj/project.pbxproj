@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		A6A27BBD200F999E00672E8C /* RNTweetView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A27BBC200F999E00672E8C /* RNTweetView.m */; };
 		A6E0F9EB200F879A004D9F4C /* RNTweetViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E0F9EA200F879A004D9F4C /* RNTweetViewManager.m */; };
