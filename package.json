@@ -1,5 +1,5 @@
 {
-  "name": "react-native-tweet",
+  "name": "react-native-tweet-view",
   "version": "1.0.0",
   "description": "A react-native component for displaing a tweet.",
   "author": "Daniel Lindström <daniel@lindstrm.se>",
@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:bonniernews/react-native-tweet.git"
+    "url": "git@github.com:bonniernews/react-native-tweet-view.git"
   },
   "dependencies": {
     "prop-types": "^15.5.10"
