@@ -1,6 +1,6 @@
 {
   "name": "react-native-tweet-view",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A react-native component for displaing a tweet.",
   "author": "Daniel Lindström <daniel@lindstrm.se>",
   "main": "index.js",
