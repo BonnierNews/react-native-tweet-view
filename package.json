@@ -1,10 +1,10 @@
 {
   "name": "react-native-tweet",
-  "version": "0.0.1",
-  "description": "A react-native component for displaing a tweet",
+  "version": "1.0.0",
+  "description": "A react-native component for displaing a tweet.",
   "author": "Daniel Lindström <daniel@lindstrm.se>",
   "main": "index.js",
-  "license": "BSD-2-Clause",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git@github.com:bonniernews/react-native-tweet.git"
@@ -14,10 +14,5 @@
   },
   "peerDependencies": {
     "react-native": ">=0.44.0"
-  },
-  "devDependencies": {
-    "babel-eslint": "^7.2.3",
-    "eslint": "^4.3.0",
-    "eslint-plugin-react": "^7.1.0"
   }
 }
