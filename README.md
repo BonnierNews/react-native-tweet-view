@@ -2,7 +2,7 @@
 
 A react-native module for fetching and displaying a tweet.
 
-Wrapping [Twitter Kit](https://github.com/twitter/twitter-kit-ios)
+Wrapping [Twitter Kit iOS](https://github.com/twitter/twitter-kit-ios) and [Twitter Kit Android](https://github.com/twitter/twitter-kit-android)
 
 #### Installation
 
